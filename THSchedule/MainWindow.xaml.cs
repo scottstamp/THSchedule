@@ -133,7 +133,7 @@ namespace THSchedule
                     col.Width = hiddenLength;
 
             Width = 240;
-            Height = 620;
+            Height = 650;
         }
 
         private void ShowAllColumns()
