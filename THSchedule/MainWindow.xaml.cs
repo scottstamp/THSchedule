@@ -46,11 +46,25 @@ namespace THSchedule
             var day = (utcNow.DayOfWeek == 0) ? 7 : (int)utcNow.DayOfWeek;
             var hour = utcNow.Hour;
             if (minified) ShowDayColumn(day);
+            if (utcNow.Minute == 50)
+            {
+                var nextEvent = timetableData.Timetable.Where(t => t.Day == day && t.Hour == hour + 1).FirstOrDefault();
+                if (nextEvent != null) new ToastNotification(nextEvent.Event?.Name ?? nextEvent.Name).Show();
+            }
 
-            var json = await client.GetStringAsync("https://thishabbo.com/api/events/timetable");
-            ClearEvents();
+            try
+            {
+                var json = await client.GetStringAsync("https://thishabbo.com/api/events/timetable");
+                ClearEvents();
+                timetableData = JsonConvert.DeserializeObject<TimetableData>(json);
+            }
+            catch (HttpRequestException hEx)
+            {
+                // HTTP exception or timeout, TH probably down for a moment
+                // TODO: handle exception maybe?
+                _ = hEx; // discard to shut up IDE0059
+            }
 
-            timetableData = JsonConvert.DeserializeObject<TimetableData>(json);
             foreach (var evt in timetableData.Timetable)
             {
                 var eventLabel = new Label

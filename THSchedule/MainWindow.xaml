@@ -2,6 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="THSchedule" Height="700" Width="1000" Style="{DynamicResource BlackWindowStyle}">
+    
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="30" CornerRadius="4" ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}" />
     </WindowChrome.WindowChrome>
@@ -9,6 +10,8 @@
         <DockPanel x:Name="TitleBar" DockPanel.Dock="Top" Height="26" Margin="4,4,4,0">
             <Button x:Name="CollapseButton" Content="↔" DockPanel.Dock="Left" Click="CollapseButton_Click"
                     Style="{DynamicResource TitleBarButtonStyle}" Template="{DynamicResource TitleBarButtonControlTemplate}" FontSize="18"/>
+            <!--<Button x:Name="TopMostButton" Content="📌" DockPanel.Dock="Left" Click="CollapseButton_Click"
+                    Style="{DynamicResource TitleBarButtonStyle}" Template="{DynamicResource TitleBarButtonControlTemplate}"/>-->
             <Button x:Name="CloseButton" Content="❌" DockPanel.Dock="Right" Click="CloseButton_Click"
                     Style="{DynamicResource TitleBarButtonStyle}" Template="{DynamicResource TitleBarButtonControlTemplate}"/>
             <Button x:Name="MinButton" Content="🗕" DockPanel.Dock="Right" Click="MinButton_Click"
@@ -92,4 +95,5 @@
             <Label HorizontalAlignment="Center" Grid.Column="0" Grid.Row="24" Content="11:00 PM"/>
         </Grid>
     </DockPanel>
+    
 </Window>
