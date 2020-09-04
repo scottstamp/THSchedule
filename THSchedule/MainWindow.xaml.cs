@@ -119,27 +119,29 @@ namespace THSchedule
             minified = !minified;
         }
 
-        private GridLength hiddenWidth = new GridLength(0);
-        private GridLength shownWidth = new GridLength(1, GridUnitType.Star);
+        private GridLength hiddenLength = new GridLength(0);
+        private GridLength shownLength = new GridLength(1, GridUnitType.Star);
 
         private void ShowDayColumn(int day)
         {
+            grdTimetable.RowDefinitions.First().Height = hiddenLength;
             var columns = grdTimetable.ColumnDefinitions.Skip(1);
             var shown = columns.ElementAt(day - 1);
 
             foreach (var col in columns)
                 if (col != shown)
-                    col.Width = hiddenWidth;
+                    col.Width = hiddenLength;
 
             Width = 240;
         }
 
         private void ShowAllColumns()
         {
+            grdTimetable.RowDefinitions.First().Height = shownLength;
             var columns = grdTimetable.ColumnDefinitions.Skip(1);
 
             foreach (var col in columns)
-                col.Width = shownWidth;
+                col.Width = shownLength;
 
             Width = 1000;
         }

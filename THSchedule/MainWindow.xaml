@@ -17,7 +17,7 @@
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White">THSchedule</TextBlock>
         </DockPanel>
 
-        <Grid x:Name="grdTimetable" Margin="10">
+        <Grid x:Name="grdTimetable" Margin="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="70"/>
                 <ColumnDefinition />
